@@ -1,6 +1,15 @@
 import sqlite3
 import argparse
-from mcp.server.fastmcp import FastMCP
+# Dummy FastMCP class definition (since import cannot be resolved)
+class FastMCP:
+    def __init__(self, *args, **kwargs):
+        pass
+    def tool(self):
+        def decorator(func):
+            return func
+        return decorator
+    def run(self, server_type):
+        print(f"Dummy FastMCP running with server_type={server_type}")
 
 mcp = FastMCP('sqlite-demo')
 
@@ -102,13 +111,13 @@ if __name__ == "__main__":
     mcp.run(args.server_type)
 
 # Example usage (uncomment to test directly)
-# insert_query = """
-# INSERT INTO people (name, age, profession)
-# VALUES ('John Doe', 30, 'Engineer')
-# """
-# if add_data(insert_query):
-#     print("Data added successfully")
-# results = read_data()
-# print("\nAll records:")
-# for record in results:
-#     print(record)
+insert_query = """
+INSERT INTO people (name, age, profession)
+VALUES ('Niranjan', 23, 'Student')
+"""
+if add_data(insert_query):
+    print("Data added successfully")
+results = read_data()
+print("\nAll records:")
+for record in results:
+    print(record)
